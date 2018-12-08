@@ -1,0 +1,35 @@
+body {
+    background-image: url(../images/house_background.png);
+    color: white;
+}
+
+#top-buffer {
+    height: 100px;
+}
+
+#bootstrap-overrides .jumbotron {
+    background: #404040;
+}
+
+h1 {
+    color: #91e9ed;
+}
+
+#start-button {
+    background: #ce7b01;
+    color: black;
+}
+
+#bottom-buffer {
+    height: 300px;
+}
+
+#btnLabel {
+    margin-right: 10px;
+    margin-left: 10px;
+    /* change style */
+}
+
+#questions {
+    /* change style */
+}
