@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+    
+    var hideQuiz = function() {
+        $("#quiz").remove();
+    };
+    hideQuiz(true);
+
     const myQuestions = [
         { // 1
             question: "Who are House's three main employees?",
@@ -53,49 +59,24 @@ $(document).ready(function() {
         }
     ];
 
-    // const list = document.getElementById("questions");
     const submitButton = document.getElementById("submit");
 
-    // var time = 0;
-    // function countDown() {
-    //     time = 120;
-    //     --time;
-    // }
-
     var answered = 0;
-    var score= 0;
+    var score = 0;
     var counter = 0;
-    var time = 120;
-    // var clockRunning = false;
-    // var intervalID;
+    var time = 5;
 
-    // var radBtn = document.querySelector('input[type=radio]:checked').val();
-    // above did not help my counter issue
-    
     $("#start-button").on("click", function() {
         playTrivia();
-        
     });
-    
+
     function playTrivia() {
         $("#start-button").remove();
         $(".lead").remove();
         $("#clock").text("Time remaining: " + time);
-        time = 120;
-         // this line is working...just need correct syntax to get the actual clock to appear...
-        $("#submit").html(`<br><br><button type="button" id="start-button" class="btn btn-lg">Submit!</button>`)
+        hideQuiz = false;
+        $("#submit").html(`<br><br><button type="button" id="start-button" class="btn btn-lg">Submit!</button>`);
 
-        // if (!clockRunning) {
-        //     intervalId = (count, 1000 * 120);
-        //     clockRunning = true;
-        // }
-        setInterval (function() {
-            time--;
-        }, 1000);
-
-        console.log(time);
-
-        
         // Q1
         $("#question1").append(`<br>` + `<p>${myQuestions[0].question}</p>` + `<br>`);
         for (var a = 0; a < myQuestions[0].answers.length; a++) {
@@ -155,44 +136,42 @@ $(document).ready(function() {
             $("#answer10").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers9"> ${myQuestions[9].answers[k]} </label>` + `<br>`);
         }
     }
-    
-    setTimeout(showResults, 1000 * 120); // 120 seconds / 2 minutes
 
-// FUNCTION BELOW IS BROKEN I THINK BECAUSE OF THE CONSOLE LOG'S... THEY'RE NOT EVEN SHOWING UP
+    // Q1:3   Q2:    Q3:     Q4:     Q5:     Q6:     Q7:     Q8:     Q9:     Q10:
 
     function scoreKeeper() {
-        for (var m = 0; m < myQuestions.length; m++) {
-            console.log(myQuestions.length); // 10
-            console.log(myQuestions[m]); // yes, working, current object in the array in the for loop
-            console.log(myQuestions[m].correctAnswer); // working as well
-            for (var n = 0; n < myQuestions[m].answers.length; n++) {
-                if ($(`input:radio[name="answers"]:checked`).val() === myQuestions[m].correctAnswer) {
-                    console.log(score); // 0
-                    console.log("Correct");
-                    score++;
-                } else if ($(`input:radio[name="answers"]:checked`).val() != myQuestions[m].correctAnswer) { // NOT GETTING PICKED UP AT ALL
-                    console.log(answered); // 
-                    console.log("Wrong");
-                    answered++;
-                }
+    
+        console.log(myQuestions.length); // 10
+        console.log(myQuestions[0]); // question object
+        console.log(myQuestions[0].correctAnswer); // correct answer!
+        console.log(myQuestions[0].answers); // answer array!
+        console.log(myQuestions[0].answers.length); // 4!
+
+        // for (var a = 0; a < myQuestions[0].answers.length; a++) {
+            if ($(`input[name="answers0"]:checked`).val() === myQuestions[0].correctAnswer) {
+                console.log(score); // broken/not showing up
+                console.log("Correct");
+                score++;
+            } else if ($(`input[name="answers0"]:checked`).val() != myQuestions[0].correctAnswer) {
+                console.log(answered); // this is incrementing
+                console.log("Wrong");
+                answered++;
             }
-        }
-        console.log(score); //  1
-        console.log(answered);
+        // }
+        console.log(score); // 
+        console.log(answered); // 
+
     }
 
-    // $(`input:radio:checked`).val() === myQuestions[m].correctAnswer
+    function countDown() {
+        time--;
+    }
+    setTimeout(countDown, 1000 * 5); // 5s
     // 
+    // $(document.getElementsByClassName(`btnLabel3`))
+    // $(document.getElementsByClassName(`btnLabel${counter}`)
     // 
 
-    // for (var i = 0; i < myQuestions.length; i++) {
-    //     $("#questions").append(`<br>` + `<p>${myQuestions[i].question}</p>` + `<br>`);
-    //     for (var j = 0; j < myQuestions[i].answers.length; j++) {
-    //         var btnRows;
-    //         $("#questions").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers"> ${myQuestions[i].answers[j]} </label>` + `<br>`);
-    //     }
-    // }
-    
     function showResults() {
         console.log(score); // 0
         console.log(answered); // 0
@@ -207,5 +186,6 @@ $(document).ready(function() {
     }
 
     submitButton.addEventListener("click", showResults);
-        
+
+
 });
