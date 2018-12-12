@@ -82,17 +82,15 @@ $(document).ready(function() {
          // this line is working...just need correct syntax to get the actual clock to appear...
         $("#submit").html(`<br><br><button type="button" id="start-button" class="btn btn-lg">Submit!</button>`);
 
-        
-
-
+        // populated the questions and answers on my page after the start button is clicked. it inserts them into the "quiz" div
         for (var i = 0; i < myQuestions.length; i++) {
             $("#quiz").append(`
             <br><p>${myQuestions[i].question}</p>
             <form id="formAnswers">
-            <label><input type="radio" name="${myQuestions[i].answers[0]}" value="${myQuestions[i].answers[0]}">${myQuestions[i].answers[0]}</label>
-            <label><input type="radio" name="${myQuestions[i].answers[1]}" value="${myQuestions[i].answers[1]}">${myQuestions[i].answers[1]}</label>
-            <label><input type="radio" name="${myQuestions[i].answers[2]}" value="${myQuestions[i].answers[2]}">${myQuestions[i].answers[2]}</label>
-            <label><input type="radio" name="${myQuestions[i].answers[3]}" value="${myQuestions[i].answers[3]}">${myQuestions[i].answers[3]}</label>
+            <label><input type="radio" name="${i}" value="${myQuestions[i].answers[0]}">${myQuestions[i].answers[0]}</label>
+            <label><input type="radio" name="${i}" value="${myQuestions[i].answers[1]}">${myQuestions[i].answers[1]}</label>
+            <label><input type="radio" name="${i}" value="${myQuestions[i].answers[2]}">${myQuestions[i].answers[2]}</label>
+            <label><input type="radio" name="${i}" value="${myQuestions[i].answers[3]}">${myQuestions[i].answers[3]}</label>
             <br>
             </form>`);
         }
@@ -105,8 +103,7 @@ $(document).ready(function() {
                 $("#clock").text("Time remaining: " + time);
             }
         }, 1000 * 120);
-        
-
+    
         console.log(time);
 
     }
