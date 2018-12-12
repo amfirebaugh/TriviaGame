@@ -73,92 +73,49 @@ $(document).ready(function() {
     // above did not help my counter issue
     
     $("#start-button").on("click", function() {
-        playTrivia();
-        
+        playTrivia(); 
     });
     
     function playTrivia() {
         $("#start-button").remove();
         $(".lead").remove();
-        $("#clock").text("Time remaining: " + time);
-        time = 120;
          // this line is working...just need correct syntax to get the actual clock to appear...
-        $("#submit").html(`<br><br><button type="button" id="start-button" class="btn btn-lg">Submit!</button>`)
+        $("#submit").html(`<br><br><button type="button" id="start-button" class="btn btn-lg">Submit!</button>`);
 
-        // if (!clockRunning) {
-        //     intervalId = (count, 1000 * 120);
-        //     clockRunning = true;
-        // }
-        setInterval (function() {
-            time--;
-        }, 1000);
+        
+
+
+        for (var i = 0; i < myQuestions.length; i++) {
+            $("#quiz").append(`
+            <br><p>${myQuestions[i].question}</p>
+            <form id="formAnswers">
+            <label><input type="radio" name="${myQuestions[i].answers[0]}" value="${myQuestions[i].answers[0]}">${myQuestions[i].answers[0]}</label>
+            <label><input type="radio" name="${myQuestions[i].answers[1]}" value="${myQuestions[i].answers[1]}">${myQuestions[i].answers[1]}</label>
+            <label><input type="radio" name="${myQuestions[i].answers[2]}" value="${myQuestions[i].answers[2]}">${myQuestions[i].answers[2]}</label>
+            <label><input type="radio" name="${myQuestions[i].answers[3]}" value="${myQuestions[i].answers[3]}">${myQuestions[i].answers[3]}</label>
+            <br>
+            </form>`);
+        }
+
+        setTimeout (function() {
+            for (var i = 120; i >= 0; i--) {
+                // console.log(i);
+                console.log(time);
+                time = i;
+                $("#clock").text("Time remaining: " + time);
+            }
+        }, 1000 * 120);
+        
 
         console.log(time);
 
-        
-        // Q1
-        $("#question1").append(`<br>` + `<p>${myQuestions[0].question}</p>` + `<br>`);
-        for (var a = 0; a < myQuestions[0].answers.length; a++) {
-            $("#answer1").append(`<label> <input type="radio" value="${myQuestions[0].answers[a]}" class="btnLabel${counter++}" name="answers0"> ${myQuestions[0].answers[a]} </label>` + `<br>`);
-        }
-        // Q2
-        $("#question2").append(`<br>` + `<p>${myQuestions[1].question}</p>` + `<br>`);
-        for (var b = 0; b < myQuestions[1].answers.length; b++) {
-            $("#answer2").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers1"> ${myQuestions[1].answers[b]} </label>` + `<br>`);
-        }
-
-        // Q3
-        $("#question3").append(`<br>` + `<p>${myQuestions[2].question}</p>` + `<br>`);
-        for (var c = 0; c < myQuestions[2].answers.length; c++) {
-            $("#answer3").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers2"> ${myQuestions[2].answers[c]} </label>` + `<br>`);
-        }
-
-        // Q4
-        $("#question4").append(`<br>` + `<p>${myQuestions[3].question}</p>` + `<br>`);
-        for (var d = 0; d < myQuestions[3].answers.length; d++) {
-            $("#answer4").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers3"> ${myQuestions[3].answers[d]} </label>` + `<br>`);
-        }
-
-        // Q5
-        $("#question5").append(`<br>` + `<p>${myQuestions[4].question}</p>` + `<br>`);
-        for (var e = 0; e < myQuestions[4].answers.length; e++) {
-            $("#answer5").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers4"> ${myQuestions[4].answers[e]} </label>` + `<br>`);
-        }
-
-        // Q6
-        $("#question6").append(`<br>` + `<p>${myQuestions[5].question}</p>` + `<br>`);
-        for (var f = 0; f < myQuestions[5].answers.length; f++) {
-            $("#answer6").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers5"> ${myQuestions[5].answers[f]} </label>` + `<br>`);
-        }
-
-        // Q7
-        $("#question7").append(`<br>` + `<p>${myQuestions[6].question}</p>` + `<br>`);
-        for (var g = 0; g < myQuestions[6].answers.length; g++) {
-            $("#answer7").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers6"> ${myQuestions[6].answers[g]} </label>` + `<br>`);
-        }
-
-        // Q8
-        $("#question8").append(`<br>` + `<p>${myQuestions[7].question}</p>` + `<br>`);
-        for (var h = 0; h < myQuestions[7].answers.length; h++) {
-            $("#answer8").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers7"> ${myQuestions[7].answers[h]} </label>` + `<br>`);
-        }
-
-        // Q9
-        $("#question9").append(`<br>` + `<p>${myQuestions[8].question}</p>` + `<br>`);
-        for (var j = 0; j < myQuestions[8].answers.length; j++) {
-            $("#answer9").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers8"> ${myQuestions[8].answers[j]} </label>` + `<br>`);
-        }
-
-        // 10
-        $("#question10").append(`<br>` + `<p>${myQuestions[9].question}</p>` + `<br>`);
-        for (var k = 0; k < myQuestions[9].answers.length; k++) {
-            $("#answer10").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers9"> ${myQuestions[9].answers[k]} </label>` + `<br>`);
-        }
     }
+    
     
     setTimeout(showResults, 1000 * 120); // 120 seconds / 2 minutes
 
-// FUNCTION BELOW IS BROKEN I THINK BECAUSE OF THE CONSOLE LOG'S... THEY'RE NOT EVEN SHOWING UP
+
+    // FUNCTION BELOW IS BROKEN BECAUSE I CAN'T FIGURE OUT HOW TO CORRECTLY "GRAB" MY RADIO BUTTONS...I'VE TRIED MANY MANY DIFFERENT THINGS, SUCH AS TRYING TO GRAB DIFFERENT NAME ATTRIBUTES, CLASSES, WITH/WITHOUT THE .VAL(), AND EVEN JUST USING GETELEMENTBYID'S INSTEAD OF THE CODE BELOW. I EVEN CHANGED HOW I DISPLAYED MY QUIZ ABOVE DRAMATICALLY TO TRY TO REMEDY THIS (A WAY LESS DRY CODED WAY, BUT ONLY WAY I KNEW HOW TO TRY TO FIX THIS...) I REALLY WANT TO KNOW HOW TO FIX THIS AND CANNOT WAIT TO LEARN HOW TO REMEDY THIS HOT MESS! :)
 
     function scoreKeeper() {
         for (var m = 0; m < myQuestions.length; m++) {
@@ -182,16 +139,10 @@ $(document).ready(function() {
     }
 
     // $(`input:radio:checked`).val() === myQuestions[m].correctAnswer
-    // 
-    // 
 
-    // for (var i = 0; i < myQuestions.length; i++) {
-    //     $("#questions").append(`<br>` + `<p>${myQuestions[i].question}</p>` + `<br>`);
-    //     for (var j = 0; j < myQuestions[i].answers.length; j++) {
-    //         var btnRows;
-    //         $("#questions").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers"> ${myQuestions[i].answers[j]} </label>` + `<br>`);
-    //     }
-    // }
+
+    // cleaner/dryer way I was coding my questions and answers, but ran into the major issues of being able to select multiple answer choices and not being able to grab the user input to check for correct answers vs. wrong answers and unanswered questions.
+
     
     function showResults() {
         console.log(score); // 0
@@ -207,5 +158,4 @@ $(document).ready(function() {
     }
 
     submitButton.addEventListener("click", showResults);
-        
 });

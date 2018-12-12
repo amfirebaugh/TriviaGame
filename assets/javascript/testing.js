@@ -139,6 +139,67 @@ $(document).ready(function() {
 
     // Q1:3   Q2:    Q3:     Q4:     Q5:     Q6:     Q7:     Q8:     Q9:     Q10:
 
+
+        // Q1
+        // $("#question1").append(`<br>` + `<p>${myQuestions[0].question}</p>` + `<br>`);
+        // for (var a = 0; a < myQuestions[0].answers.length; a++) {
+        //     $("#answer1").append(`<label> <input type="radio" value="${myQuestions[0].answers[a]}" class="btnLabel${counter++}" name="answers0"> ${myQuestions[0].answers[a]} </label>` + `<br>`);
+        // }
+        // // Q2
+        // $("#question2").append(`<br>` + `<p>${myQuestions[1].question}</p>` + `<br>`);
+        // for (var b = 0; b < myQuestions[1].answers.length; b++) {
+        //     $("#answer2").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers1"> ${myQuestions[1].answers[b]} </label>` + `<br>`);
+        // }
+
+        // // Q3
+        // $("#question3").append(`<br>` + `<p>${myQuestions[2].question}</p>` + `<br>`);
+        // for (var c = 0; c < myQuestions[2].answers.length; c++) {
+        //     $("#answer3").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers2"> ${myQuestions[2].answers[c]} </label>` + `<br>`);
+        // }
+
+        // // Q4
+        // $("#question4").append(`<br>` + `<p>${myQuestions[3].question}</p>` + `<br>`);
+        // for (var d = 0; d < myQuestions[3].answers.length; d++) {
+        //     $("#answer4").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers3"> ${myQuestions[3].answers[d]} </label>` + `<br>`);
+        // }
+
+        // // Q5
+        // $("#question5").append(`<br>` + `<p>${myQuestions[4].question}</p>` + `<br>`);
+        // for (var e = 0; e < myQuestions[4].answers.length; e++) {
+        //     $("#answer5").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers4"> ${myQuestions[4].answers[e]} </label>` + `<br>`);
+        // }
+
+        // // Q6
+        // $("#question6").append(`<br>` + `<p>${myQuestions[5].question}</p>` + `<br>`);
+        // for (var f = 0; f < myQuestions[5].answers.length; f++) {
+        //     $("#answer6").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers5"> ${myQuestions[5].answers[f]} </label>` + `<br>`);
+        // }
+
+        // // Q7
+        // $("#question7").append(`<br>` + `<p>${myQuestions[6].question}</p>` + `<br>`);
+        // for (var g = 0; g < myQuestions[6].answers.length; g++) {
+        //     $("#answer7").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers6"> ${myQuestions[6].answers[g]} </label>` + `<br>`);
+        // }
+
+        // // Q8
+        // $("#question8").append(`<br>` + `<p>${myQuestions[7].question}</p>` + `<br>`);
+        // for (var h = 0; h < myQuestions[7].answers.length; h++) {
+        //     $("#answer8").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers7"> ${myQuestions[7].answers[h]} </label>` + `<br>`);
+        // }
+
+        // // Q9
+        // $("#question9").append(`<br>` + `<p>${myQuestions[8].question}</p>` + `<br>`);
+        // for (var j = 0; j < myQuestions[8].answers.length; j++) {
+        //     $("#answer9").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers8"> ${myQuestions[8].answers[j]} </label>` + `<br>`);
+        // }
+
+        // // 10
+        // $("#question10").append(`<br>` + `<p>${myQuestions[9].question}</p>` + `<br>`);
+        // for (var k = 0; k < myQuestions[9].answers.length; k++) {
+        //     $("#answer10").append(`<label> <input type="radio" class="btnLabel${counter++}" name="answers9"> ${myQuestions[9].answers[k]} </label>` + `<br>`);
+
+
+
     function scoreKeeper() {
     
         console.log(myQuestions.length); // 10
