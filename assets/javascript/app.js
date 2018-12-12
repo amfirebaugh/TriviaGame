@@ -55,6 +55,7 @@ $(document).ready(function() {
 
     // const list = document.getElementById("questions");
     const submitButton = document.getElementById("submit");
+    const radioBtn = document.getElementsByClassName("radBtn");
 
     // var time = 0;
     // function countDown() {
@@ -86,14 +87,31 @@ $(document).ready(function() {
         for (var i = 0; i < myQuestions.length; i++) {
             $("#quiz").append(`
             <br><p>${myQuestions[i].question}</p>
-            <form id="formAnswers">
-            <label><input type="radio" name="${i}" value="${myQuestions[i].answers[0]}">${myQuestions[i].answers[0]}</label>
-            <label><input type="radio" name="${i}" value="${myQuestions[i].answers[1]}">${myQuestions[i].answers[1]}</label>
-            <label><input type="radio" name="${i}" value="${myQuestions[i].answers[2]}">${myQuestions[i].answers[2]}</label>
-            <label><input type="radio" name="${i}" value="${myQuestions[i].answers[3]}">${myQuestions[i].answers[3]}</label>
+            <form action="" id="formAnswers">
+            <label><input type="radio" class="radBtn" name="${i}" value="${myQuestions[i].answers[0]}">${myQuestions[i].answers[0]}</label>
+            <label><input type="radio" class="radBtn" name="${i}" value="${myQuestions[i].answers[1]}">${myQuestions[i].answers[1]}</label>
+            <label><input type="radio" class="radBtn" name="${i}" value="${myQuestions[i].answers[2]}">${myQuestions[i].answers[2]}</label>
+            <label><input type="radio" class="radBtn" name="${i}" value="${myQuestions[i].answers[3]}">${myQuestions[i].answers[3]}</label>
             <br>
             </form>`);
         }
+
+        // for (var j = 0; j < myQuestions[j].answers.length; j++) {
+        //     radioBtn.addEventListener("click", function() {
+        //         document.getElementsByTagName("input")[0].setAttribute("check, checked");
+        //     });
+        // }
+
+        // radioBtn.addEventListener("click", function() {
+        //     $(`input[name=${i}]`).attr("checked", "checked");
+        // });
+
+        // function check() {
+        //     document.getElementsByClassName("radBtn").checked = true;
+        // }
+        // check();
+
+        // 
 
         setTimeout (function() {
             for (var i = 120; i >= 0; i--) {
@@ -119,23 +137,25 @@ $(document).ready(function() {
             console.log(myQuestions.length); // 10
             console.log(myQuestions[m]); // yes, working, current object in the array in the for loop
             console.log(myQuestions[m].correctAnswer); // working as well
-            for (var n = 0; n < myQuestions[m].answers.length; n++) {
-                if ($(`input:radio[name="answers"]:checked`).val() === myQuestions[m].correctAnswer) {
-                    console.log(score); // 0
-                    console.log("Correct");
-                    score++;
-                } else if ($(`input:radio[name="answers"]:checked`).val() != myQuestions[m].correctAnswer) { // NOT GETTING PICKED UP AT ALL
-                    console.log(answered); // 
-                    console.log("Wrong");
-                    answered++;
-                }
+
+            if ($('input[type=radio]:checked').val() === myQuestions[m].correctAnswer) {
+                console.log(score); // 0
+                console.log("Correct");
+                score++;
+            } else if ($('input[type=radio]:checked').val() != myQuestions[m].correctAnswer) { // NOT GETTING PICKED UP AT ALL
+                console.log(answered); // 
+                console.log("Wrong");
+                answered++;
             }
         }
-        console.log(score); //  1
-        console.log(answered);
+        console.log(score); //  0
+        console.log(answered); // 20
     }
 
+    //             for (var n = 0; n < myQuestions[m].answers.length; n++) { }
+
     // $(`input:radio:checked`).val() === myQuestions[m].correctAnswer
+    // `input:radio[name="${m}"]:checked`).val()
 
 
     // cleaner/dryer way I was coding my questions and answers, but ran into the major issues of being able to select multiple answer choices and not being able to grab the user input to check for correct answers vs. wrong answers and unanswered questions.
